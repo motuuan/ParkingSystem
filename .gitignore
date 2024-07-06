@@ -1,0 +1,19 @@
+/data/vd1.mp4
+/data/vd2.mp4
+/data/vd11.mp4
+
+# 忽略虚拟环境目录
+venv/
+.venv/
+env/
+
+# 忽略pip缓存和构建目录
+.cache/
+build/
+dist/
+*.egg-info/
+
+# 忽略PyCharm和其他IDE的项目文件
+.idea/
+*.iml
+*.ipynb_checkpoints/
