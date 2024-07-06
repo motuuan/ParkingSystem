@@ -51,7 +51,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>视频窗口</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="video2">
@@ -64,7 +67,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">

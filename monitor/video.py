@@ -15,7 +15,7 @@ class Video(QThread):
         super().__init__()
         # 准备工作
         self.th_id = 0
-        if video_id == 'data/vd1.mp4':
+        if video_id == 'data/vd11.mp4':
             self.th_id = 1
         if video_id == 'data/vd2.mp4':
             self.th_id = 2
@@ -31,12 +31,10 @@ class Video(QThread):
         # 耗时操作
         while True:
             ret, frame = self.dev.read()
-            print(frame.shape)
             if not ret:
                 print('no')
             if frame_count % frame_interval == 0:
                 frame, num, pnum, cartype = vehicle_detect(frame,vid)
-                print(cartype)
                 h, w, c = frame.shape
                 img_bytes = frame.tobytes()
                 self.send.emit(h, w, c, img_bytes,self.th_id,num,pnum,cartype)

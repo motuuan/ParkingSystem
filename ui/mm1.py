@@ -27,6 +27,7 @@ class Ui_dialog(object):
         self.label_1.setObjectName("label_1")
         self.video1 = QtWidgets.QLabel(dialog)
         self.video1.setGeometry(QtCore.QRect(50, 170, 611, 431))
+        self.video1.setAlignment(QtCore.Qt.AlignCenter)
         self.video1.setObjectName("video1")
         self.video2 = QtWidgets.QLabel(dialog)
         self.video2.setGeometry(QtCore.QRect(730, 80, 231, 571))
@@ -72,8 +73,8 @@ class Ui_dialog(object):
         _translate = QtCore.QCoreApplication.translate
         dialog.setWindowTitle(_translate("dialog", "Dialog"))
         self.label_1.setText(_translate("dialog", "停车场-入口A"))
-        self.video1.setText(_translate("dialog", "TextLabel"))
-        self.video2.setText(_translate("dialog", "TextLabel"))
+        self.video1.setText(_translate("dialog", "视频窗口"))
+        self.video2.setText(_translate("dialog", " "))
         self.pushButton.setText(_translate("dialog", "查看记录"))
         self.carnum1.setText(_translate("dialog", "TextLabel"))
         self.label_3.setText(_translate("dialog", "入口车流量："))

@@ -26,7 +26,6 @@ def vehicle_detect(img, video_id):
             x2 = x1 + location['width']
             y2 = y1 + location['height']
             cv.rectangle(img,(x1,y1),(x2,y2),(0,0,255),2)
-            #print("运行到此了")
 
             #车牌识别api调用
             license_plate_request_url = "https://aip.baidubce.com/rest/2.0/ocr/v1/license_plate"
@@ -34,11 +33,34 @@ def vehicle_detect(img, video_id):
             license_plate_request_url = license_plate_request_url + "?access_token=" + access_token
             license_plate_response = requests.post(license_plate_request_url, data=license_plate_params,
                                                    headers=headers)
-            if license_plate_response:
-                plate_data = license_plate_response.json()
-                #print(plate_data)
-                plate_number = plate_data['words_result']['number']
-                plate_color = plate_data['words_result']['color']
+            try:
+                license_plate_response = requests.post(license_plate_request_url, data=license_plate_params,
+                                                       headers=headers)
+
+                # 检查HTTP响应状态码
+                if license_plate_response.status_code == 200:
+                    plate_data = license_plate_response.json()
+
+                    # 检查响应数据是否包含车牌信息
+                    if 'words_result' in plate_data:
+                        plate_number = plate_data['words_result']['number']
+                        plate_color = plate_data['words_result']['color']
+                    else:
+                        plate_number = "unknown"
+                        plate_color = "unknown"
+                else:
+                    print("Error: API call returned status code", license_plate_response.status_code)
+                    plate_number = "unknown"
+                    plate_color = "unknown"
+            except Exception as e:
+                print("Error:", str(e))
+                plate_number = "unknown"
+                plate_color = "unknown"
+
+            # if license_plate_response:
+            #     plate_data = license_plate_response.json()
+            #     plate_number = plate_data['words_result']['number']
+            #     plate_color = plate_data['words_result']['color']
 
             #text = item['type']
             vehicle_type = item['type']
