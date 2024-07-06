@@ -1,0 +1,9 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+<qresource prefix="/">
+    <file>back.png</file>
+    <file>back1.png</file>
+
+</qresource>
+</RCC>
+
