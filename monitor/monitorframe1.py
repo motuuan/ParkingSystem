@@ -11,7 +11,7 @@ class MonitorDialog1(QDialog):
         self.ui = Ui_dialog()
         self.ui.setupUi(self)
         self.parent_window = parent_window
-        self.th1 = Video('data/vd11.mp4')
+        self.th1 = Video('data/vd1.mp4')
         self.th1.send.connect(self.showimg)
         self.th1.start()
 

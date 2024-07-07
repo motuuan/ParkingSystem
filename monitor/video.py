@@ -15,7 +15,7 @@ class Video(QThread):
         super().__init__()
         # 准备工作
         self.th_id = 0
-        if video_id == 'data/vd11.mp4':
+        if video_id == 'data/vd1.mp4':
             self.th_id = 1
         if video_id == 'data/vd2.mp4':
             self.th_id = 2
@@ -25,7 +25,7 @@ class Video(QThread):
     def run(self):
         frame_count = 0  # 初始化帧计数器
         fps = self.dev.get(cv.CAP_PROP_FPS)  # 获取视频帧率
-        frame_interval = int(fps * 3)  # 计算3秒的帧数
+        frame_interval = int(fps)  # 计算3秒的帧数
         vid = self.th_id
 
         # 耗时操作
@@ -39,7 +39,7 @@ class Video(QThread):
                 img_bytes = frame.tobytes()
                 self.send.emit(h, w, c, img_bytes,self.th_id,num,pnum,cartype)
             frame_count += 1
-            QThread.usleep(10000)
+            QThread.usleep(400000)
 
 
 
